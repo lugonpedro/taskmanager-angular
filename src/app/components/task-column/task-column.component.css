@@ -1,0 +1,56 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 14rem;
+}
+
+.column .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.column .title {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #D9D9D9;
+}
+
+.column .body {
+  background: #1E1E1E;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.column .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.column .add-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.25rem;
+  background: transparent;
+  color: #D9D9D9;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.5s;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.column .add-btn .material-icons {
+  font-size: 0.75rem;
+}
+
+.column .add-btn:hover {
+  background-color: #78437F;
+}

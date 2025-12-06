@@ -1,0 +1,9 @@
+.board {
+  height: 100%;
+  background-color: #333333;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  overflow: auto;
+}

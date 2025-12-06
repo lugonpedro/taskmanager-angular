@@ -9,3 +9,17 @@
 body {
   font-family: "Inter", sans-serif;
 }
+
+*::-webkit-scrollbar {
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #78437F;
+  border-radius: 2rem;
+}

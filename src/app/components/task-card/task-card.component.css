@@ -1,0 +1,58 @@
+.task-card {
+  background: #D9D9D9;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 4rem;
+  cursor: pointer;
+  color: #1E1E1E;
+  transition: 0.5s;
+}
+
+.task-card:hover {
+  background-color: #78437F;
+  color: #D9D9D9
+}
+
+.task-card .title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-card .title-row .title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.task-card .title-row .material-icons {
+  font-size: 1rem;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.task-card:hover .title-row .material-icons {
+  opacity: 1;
+}
+
+.task-card .body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task-card .body .date  {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task-card .body .date .material-icons, .task-card .body .date .text  {
+  font-size: 0.75rem;
+}
+
+.task-card .body .description .material-icons  {
+  font-size: 0.75rem;
+}

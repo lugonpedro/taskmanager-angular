@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #1E1E1E;
+  color: #D9D9D9;
+}
+
+.not-found {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -2,13 +2,13 @@
   display: block;
   width: 100dvw;
   height: 100dvh;
-  background-color: #1E1E1E;
+  background-color: #333333;
 }
 
 .home {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 3rem;
+  padding: 1rem 0.5rem;
 }
 
 .home .header {
@@ -25,13 +25,17 @@
   gap: 0.5rem;
   padding: 1rem 2rem;
   border-radius: 0.75rem;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: bold;
   cursor: pointer;
   background: #78437F;
   color: #D9D9D9;
   transition: 0.5s;
   width: 100%;
+}
+
+.home .new-task-btn .material-icons {
+  font-size: 1rem;
 }
 
 .home .new-task-btn:hover {
@@ -43,6 +47,14 @@
 }
 
 @media (min-width: 992px) {
+  :host {
+    background-color: #1E1E1E;
+  }
+
+  .home {
+    padding: 1.5rem 3rem;
+  }
+
   .home .new-task-btn {
     width: 18rem;
   }

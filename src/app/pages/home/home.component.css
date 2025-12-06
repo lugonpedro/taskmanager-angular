@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #1E1E1E;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 3rem;
+}
+
+.home .header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.home .new-task-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #78437F;
+  color: #D9D9D9;
+  transition: 0.5s;
+  width: 100%;
+}
+
+.home .new-task-btn:hover {
+  opacity: 0.7;
+}
+
+.home .content {
+  height: 80dvh;
+}
+
+@media (min-width: 992px) {
+  .home .new-task-btn {
+    width: 18rem;
+  }
+}

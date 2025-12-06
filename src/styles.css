@@ -5,3 +5,7 @@
   list-style: none;
   border: 0;
 }
+
+body {
+  font-family: "Inter", sans-serif;
+}

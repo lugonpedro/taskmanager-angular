@@ -1,0 +1,52 @@
+@if(visible) {
+  <div class="modal-overlay" (click)="onOverlayClick()">
+    <div class="modal" (click)="onModalClick($event)">
+      <header class="header">
+        <h2 class="title">New Task</h2>
+
+          <button
+            type="button"
+            class="close-btn"
+            (click)="onCloseClick()"
+            aria-label="Close modal"
+          >
+            <span class="material-icons">close</span>
+          </button>
+      </header>
+
+      <section class="body">
+        <form class="form" (ngSubmit)="addTask()">
+          <input
+              type="text"
+              placeholder="Title"
+              class="modal-input"
+              [(ngModel)]="newTask.title"
+              name="title"
+            />
+
+          <div class="modal-input modal-date-input">
+            <span class="material-icons" (click)="dateInput.showPicker()">calendar_today</span>
+            <input
+                #dateInput
+                type="date"
+                [(ngModel)]="newTask.date"
+                name="date"
+              />
+          </div>
+
+          <textarea
+              placeholder="Description"
+              rows="3"
+              class="modal-textarea"
+              [(ngModel)]="newTask.description"
+              name="description"
+            ></textarea>
+
+          <button type="submit" class="modal-submit">
+            Add
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+  }

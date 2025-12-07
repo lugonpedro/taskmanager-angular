@@ -1,0 +1,112 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.modal {
+  background: #1E1E1E;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 24rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
+  border: 1px solid #333333;
+}
+
+.modal .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal .title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #D9D9D9;
+}
+
+.modal .close-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .close-btn .material-icons {
+  font-size: 1rem;
+  color: #D9D9D9;
+}
+
+.modal .form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-input,
+.modal-textarea {
+  background: #D9D9D9;
+  border-radius: 0.75rem;
+  border: none;
+  padding: 0.5rem;
+}
+
+.modal-textarea {
+  resize: none;
+  height: 3rem;
+  font-family: inherit;
+}
+
+.modal-date-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-date-input .material-icons {
+  font-size: 1rem;
+  color: #1E1E1E;
+}
+
+.modal-date-input input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+}
+
+.modal-date-input input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+.modal-date-input input[type="date"] {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+.modal-submit {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  background: #78437F;
+  color: #D9D9D9;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.modal-submit:hover {
+  opacity: 0.7;
+}

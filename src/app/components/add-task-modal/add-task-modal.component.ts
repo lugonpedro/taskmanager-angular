@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CreateTaskDto, TaskService } from '../../services/task.service';
+import { TaskService } from '../../services/task.service';
+import { CreateTaskDto } from '../../services/task.interfaces';
 
 @Component({
   selector: 'app-add-task-modal',

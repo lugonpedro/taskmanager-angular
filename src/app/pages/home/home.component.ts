@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { TaskBoardComponent } from '../../components/task-board/task-board.component';
 import { AddTaskModalComponent } from '../../components/add-task-modal/add-task-modal.component';
-import { CreateTaskDto, GroupedTasks, TaskService } from '../../services/task.service';
+import { TaskService } from '../../services/task.service';
 import { catchError, EMPTY, tap } from 'rxjs';
+import { GroupedTasks, CreateTaskDto } from '../../services/task.interfaces';
 
 @Component({
   selector: 'app-home',

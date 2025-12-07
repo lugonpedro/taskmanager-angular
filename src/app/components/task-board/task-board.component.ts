@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TaskColumnComponent } from '../task-column/task-column.component';
 import { TaskCardComponent } from '../task-card/task-card.component';
-import { GroupedTasks, TaskStatus } from '../../services/task.service';
+import { GroupedTasks, TaskStatus } from '../../services/task.interfaces';
 
 @Component({
   selector: 'app-task-board',

@@ -1,27 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-
-interface Task {
-  id: number;
-  title: string;
-  description: null | string;
-  limitDate: null | string;
-  status: TaskStatus;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export type TaskStatus = 'TODO' | 'DOING' | 'DONE';
-
-export type GroupedTasks = Record<TaskStatus, Task[]>;
-
-export interface CreateTaskDto {
-  title: string;
-  description: string | null;
-  limitDate: string | null;
-  status: TaskStatus;
-}
+import {
+  CreateTaskDto,
+  GroupedTasks,
+  Task,
+} from './task.interfaces';
 
 @Injectable({
   providedIn: 'root',

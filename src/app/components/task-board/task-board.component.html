@@ -2,7 +2,7 @@
   @for(col of columns; track col) {
   <app-task-column class="column" [title]="col">
     @for(task of tasks?.[col]; track task.id) {
-    <app-task-card></app-task-card>
+    <app-task-card [title]="task.title" [limitDate]="task.limitDate" [description]="task.description"></app-task-card>
     }
   </app-task-column>
   }

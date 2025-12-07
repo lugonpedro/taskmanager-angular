@@ -1,18 +1,21 @@
 <div class="task-card">
   <div class="title-row">
-    <p class="title">Fazer o figma</p>
-
+    <p class="title">{{ title }}</p>
     <span class="material-icons">edit</span>
   </div>
 
   <div class="body">
+    @if(limitDate) {
     <div class="date">
       <span class="material-icons">calendar_today</span>
-      <span class="text">05/12</span>
+      <span class="text">{{ limitDate | date: 'dd/MM' }}</span>
     </div>
+    }
 
+    @if(description) {
     <div class="description">
       <span class="material-icons">segment</span>
     </div>
+    }
   </div>
 </div>

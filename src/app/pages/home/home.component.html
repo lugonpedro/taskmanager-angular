@@ -11,4 +11,4 @@
   </main>
 </div>
 
-<app-add-task-modal [visible]="isNewTaskModalOpen" (close)="closeModal()" />
+<app-add-task-modal [visible]="isNewTaskModalOpen" (close)="closeModal()" (create)="onCreateTask($event)" />

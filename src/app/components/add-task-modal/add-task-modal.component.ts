@@ -1,15 +1,20 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CreateTaskDto, TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-add-task-modal',
   imports: [FormsModule],
   templateUrl: './add-task-modal.component.html',
-  styleUrl: './add-task-modal.component.css'
+  styleUrl: './add-task-modal.component.css',
 })
 export class AddTaskModalComponent {
+  readonly _taskService = inject(TaskService);
+  loading = false;
+
   @Input() visible = false;
   @Output() close = new EventEmitter<void>();
+  @Output() create = new EventEmitter<CreateTaskDto>();
 
   newTask = {
     title: '',
@@ -30,7 +35,13 @@ export class AddTaskModalComponent {
   }
 
   addTask() {
-    // console.log('Nova task:', this.newTask);
-    // this.closeModal();
+    const dto: CreateTaskDto = {
+      title: this.newTask.title,
+      description: this.newTask.description,
+      limitDate: this.newTask.date,
+      status: 'TODO',
+    };
+
+    this.create.emit(dto);
   }
 }

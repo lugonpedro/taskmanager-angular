@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TaskColumnComponent } from '../task-column/task-column.component';
 import { TaskCardComponent } from '../task-card/task-card.component';
-import { GroupedTasks } from '../../services/task.service';
-
-type ColumnKey = keyof GroupedTasks;
+import { GroupedTasks, TaskStatus } from '../../services/task.service';
 
 @Component({
   selector: 'app-task-board',
@@ -14,5 +12,5 @@ type ColumnKey = keyof GroupedTasks;
 export class TaskBoardComponent {
   @Input() tasks!: GroupedTasks;
 
-  columns: ColumnKey[] = ['TODO', 'DOING', 'DONE'];
+  columns: TaskStatus[] = ['TODO', 'DOING', 'DONE'];
 }

@@ -7,12 +7,21 @@ interface Task {
   title: string;
   description: null | string;
   limitDate: null | string;
-  status: 'TODO' | 'DOING' | 'DONE';
+  status: TaskStatus;
   createdAt: string;
   updatedAt: string;
 }
 
-export type GroupedTasks = Record<'TODO' | 'DOING' | 'DONE', Task[]>;
+export type TaskStatus = 'TODO' | 'DOING' | 'DONE';
+
+export type GroupedTasks = Record<TaskStatus, Task[]>;
+
+export interface CreateTaskDto {
+  title: string;
+  description: string | null;
+  limitDate: string | null;
+  status: TaskStatus;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +42,9 @@ export class TaskService {
         )
       )
     );
+  }
+
+  createTask(dto: CreateTaskDto): Observable<Task> {
+    return this._httpClient.post<Task>(`${this.api}/tasks`, dto);
   }
 }

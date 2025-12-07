@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TaskBoardComponent } from '../../components/task-board/task-board.component';
 import { AddTaskModalComponent } from '../../components/add-task-modal/add-task-modal.component';
-import { GroupedTasks, TaskService } from '../../services/task.service';
+import { CreateTaskDto, GroupedTasks, TaskService } from '../../services/task.service';
 import { catchError, EMPTY, tap } from 'rxjs';
 
 @Component({
@@ -36,6 +36,7 @@ export class HomeComponent {
       .subscribe((data) => {
         this.tasks = data;
         this.loading = false;
+        // TODO: Show toast
       });
   }
 
@@ -45,5 +46,18 @@ export class HomeComponent {
 
   closeModal() {
     this.isNewTaskModalOpen = false;
+  }
+
+  onCreateTask(dto: CreateTaskDto) {
+    this._taskService.createTask(dto).subscribe({
+      next: (task) => {
+        this.tasks[task.status].push(task);
+        this.isNewTaskModalOpen = false;
+        // TODO: Show toast
+      },
+      error: () => {
+        // TODO: Show toast
+      }
+    });
   }
 }

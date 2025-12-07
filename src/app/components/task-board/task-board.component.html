@@ -1,17 +1,9 @@
 <div class="board">
-  <app-task-column class="column">
+  @for(col of columns; track col) {
+  <app-task-column class="column" [title]="col">
+    @for(task of tasks?.[col]; track task.id) {
     <app-task-card></app-task-card>
-    <app-task-card></app-task-card>
-    <app-task-card></app-task-card>
-    <app-task-card></app-task-card>
-    <app-task-card></app-task-card>
-    <app-task-card></app-task-card>
+    }
   </app-task-column>
-
-  <app-task-column class="column">
-    <app-task-card></app-task-card>
-  </app-task-column>
-
-  <app-task-column class="column">
-  </app-task-column>
+  }
 </div>

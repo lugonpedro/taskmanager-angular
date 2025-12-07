@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-task-column',
   imports: [],
   templateUrl: './task-column.component.html',
-  styleUrl: './task-column.component.css'
+  styleUrl: './task-column.component.css',
 })
 export class TaskColumnComponent {
-  title = "TO DO"
+  @Input() title = '';
 }

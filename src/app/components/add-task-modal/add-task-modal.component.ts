@@ -24,6 +24,7 @@ export class AddTaskModalComponent {
   };
 
   onOverlayClick() {
+    this.resetForm();
     this.close.emit();
   }
 
@@ -32,7 +33,16 @@ export class AddTaskModalComponent {
   }
 
   onCloseClick() {
+    this.resetForm();
     this.close.emit();
+  }
+
+  resetForm() {
+    this.newTask = {
+      title: '',
+      date: '',
+      description: '',
+    };
   }
 
   addTask() {
@@ -43,5 +53,7 @@ export class AddTaskModalComponent {
     };
 
     this.create.emit(dto);
+
+    this.resetForm();
   }
 }

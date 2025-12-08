@@ -40,7 +40,6 @@ export class AddTaskModalComponent {
       title: this.newTask.title,
       description: this.newTask.description,
       limitDate: this.newTask.date,
-      status: 'TODO',
     };
 
     this.create.emit(dto);

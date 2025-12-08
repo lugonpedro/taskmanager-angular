@@ -1,0 +1,91 @@
+@if (visible && task) {
+<div class="modal-overlay" (click)="onOverlayClick()">
+  <div class="modal" (click)="onModalClick($event)">
+    <header class="header">
+      @if (!isEditing) {
+      <button type="button" class="icon" (click)="startEdit()" aria-label="Edit task">
+        <span class="material-icons">edit</span>
+      </button>
+      } @else {
+      <button type="button" class="icon dangerous" (click)="cancelEdit()" aria-label="Delete task">
+        <span class="material-icons">delete</span>
+      </button>
+      <button type="button" class="icon" (click)="cancelEdit()" aria-label="Cancel edit">
+        <span class="material-icons">close</span>
+      </button>
+      }
+    </header>
+
+    <section class="body">
+      @if (!isEditing) {
+      <div class="details">
+        <div class="detail-row">
+          <span class="title">{{ task.title }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span class="label">Status: </span>
+          <span class="value">{{ task.status }}</span>
+        </div>
+
+        @if (task.description) {
+        <div class="detail-row">
+          <span class="label">Description: </span>
+          <span class="value">{{ task.description }}</span>
+        </div>
+        }
+
+        @if (task.limitDate) {
+        <div class="detail-row">
+          <span class="label">Limit date: </span>
+          <span class="value">
+            {{ task.limitDate | date:'dd/MM/yyyy' }}
+          </span>
+        </div>
+        }
+
+        <div class="detail-row meta">
+          <span class="label">Created: </span>
+          <span class="value">
+            {{ task.createdAt | date:'dd/MM/yyyy HH:mm' }}
+          </span>
+        </div>
+
+        <div class="detail-row meta">
+          <span class="label">Updated: </span>
+          <span class="value">
+            {{ task.updatedAt | date:'dd/MM/yyyy HH:mm' }}
+          </span>
+        </div>
+      </div>
+      }
+
+      @if (isEditing) {
+      <form class="form" (ngSubmit)="save()">
+        <input type="text" placeholder="Title" class="modal-input" [(ngModel)]="form.title" name="title" />
+
+        <div class="modal-input modal-date-input">
+          <span class="material-icons" (click)="dateInput.showPicker()">
+            calendar_today
+          </span>
+          <input #dateInput type="date" [(ngModel)]="form.limitDate" name="limitDate" />
+        </div>
+
+        <textarea placeholder="Description" rows="3" class="modal-textarea" [(ngModel)]="form.description"
+          name="description"></textarea>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
+          <button type="submit" class="btn-primary">
+            Save
+          </button>
+        </div>
+      </form>
+      }
+
+    </section>
+  </div>
+</div>
+}

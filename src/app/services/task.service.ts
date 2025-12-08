@@ -5,6 +5,7 @@ import {
   CreateTaskDto,
   GroupedTasks,
   Task,
+  UpdateTaskDto,
 } from './task.interfaces';
 
 @Injectable({
@@ -30,5 +31,9 @@ export class TaskService {
 
   createTask(dto: CreateTaskDto): Observable<Task> {
     return this._httpClient.post<Task>(`${this.api}/tasks`, dto);
+  }
+
+  updateTask(id: number, dto: UpdateTaskDto): Observable<Task> {
+    return this._httpClient.put<Task>(`${this.api}/tasks/${id}`, dto);
   }
 }

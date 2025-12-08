@@ -3,11 +3,21 @@ import { TaskBoardComponent } from '../../components/task-board/task-board.compo
 import { AddTaskModalComponent } from '../../components/add-task-modal/add-task-modal.component';
 import { TaskService } from '../../services/task.service';
 import { catchError, EMPTY, tap } from 'rxjs';
-import { GroupedTasks, CreateTaskDto } from '../../services/task.interfaces';
+import {
+  GroupedTasks,
+  CreateTaskDto,
+  Task,
+  UpdateTaskDto,
+} from '../../services/task.interfaces';
+import { TaskDetailsModalComponent } from '../../components/task-details-modal/task-details-modal.component';
 
 @Component({
   selector: 'app-home',
-  imports: [TaskBoardComponent, AddTaskModalComponent],
+  imports: [
+    TaskBoardComponent,
+    AddTaskModalComponent,
+    TaskDetailsModalComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -17,6 +27,9 @@ export class HomeComponent {
   tasks: GroupedTasks = {} as GroupedTasks;
 
   isNewTaskModalOpen = false;
+
+  isDetailsModalOpen = false;
+  selectedTask: Task | null = null;
 
   ngOnInit(): void {
     this.loadTasks();
@@ -41,11 +54,11 @@ export class HomeComponent {
       });
   }
 
-  openModal() {
+  openNewTaskModal() {
     this.isNewTaskModalOpen = true;
   }
 
-  closeModal() {
+  closeNewTaskModal() {
     this.isNewTaskModalOpen = false;
   }
 
@@ -58,7 +71,40 @@ export class HomeComponent {
       },
       error: () => {
         // TODO: Show toast
-      }
+      },
+    });
+  }
+
+  openDetails(task: Task) {
+    this.selectedTask = task;
+    this.isDetailsModalOpen = true;
+  }
+
+  closeDetails() {
+    this.isDetailsModalOpen = false;
+    this.selectedTask = null;
+  }
+
+  onUpdateTask(event: { id: number; dto: UpdateTaskDto }) {
+    this._taskService.updateTask(event.id, event.dto).subscribe({
+      next: (updatedTask) => {
+        const oldStatus = this.selectedTask?.status;
+        const newStatus = updatedTask.status;
+
+        if (oldStatus) {
+          this.tasks[oldStatus] = this.tasks[oldStatus].filter(
+            (t) => t.id !== updatedTask.id
+          );
+        }
+
+        this.tasks[newStatus].push(updatedTask);
+
+        this.selectedTask = updatedTask;
+        this.isDetailsModalOpen = false;
+      },
+      error: () => {
+        // TODO: Show toast
+      },
     });
   }
 }

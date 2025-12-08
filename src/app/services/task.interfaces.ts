@@ -16,5 +16,10 @@ export interface CreateTaskDto {
   title: string;
   description: string | null;
   limitDate: string | null;
-  status: TaskStatus;
+}
+
+export interface UpdateTaskDto {
+  title: string;
+  description: string | null;
+  limitDate: string | null;
 }

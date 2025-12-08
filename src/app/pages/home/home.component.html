@@ -1,14 +1,16 @@
 <div class="home">
   <header class="header">
-    <button class="new-task-btn" (click)="openModal()">
+    <button class="new-task-btn" (click)="openNewTaskModal()">
       <span class="material-icons">add</span>
       New Task
     </button>
   </header>
 
   <main class="content">
-    <app-task-board [tasks]="tasks"></app-task-board>
+    <app-task-board [tasks]="tasks" (taskClick)="openDetails($event)"></app-task-board>
   </main>
 </div>
 
-<app-add-task-modal [visible]="isNewTaskModalOpen" (close)="closeModal()" (create)="onCreateTask($event)" />
+<app-add-task-modal [visible]="isNewTaskModalOpen" (close)="closeNewTaskModal()" (create)="onCreateTask($event)" />
+<app-task-details-modal [visible]="isDetailsModalOpen" [task]="selectedTask" (close)="closeDetails()"
+  (update)="onUpdateTask($event)"></app-task-details-modal>

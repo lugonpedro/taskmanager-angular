@@ -71,7 +71,11 @@ export class HomeComponent {
         this.isNewTaskModalOpen = false;
         this.toast.success('Task created');
       },
-      error: () => {
+      error: (err) => {
+        if (err.error.title === 'Title is required') {
+          this.toast.error('Please fill in task title');
+          return;
+        }
         this.toast.error('Error to create a task');
       },
     });

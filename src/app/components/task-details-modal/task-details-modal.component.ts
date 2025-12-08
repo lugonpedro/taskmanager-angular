@@ -16,6 +16,7 @@ export class TaskDetailsModalComponent {
 
   @Output() close = new EventEmitter<void>();
   @Output() update = new EventEmitter<{ id: number; dto: UpdateTaskDto }>();
+  @Output() delete = new EventEmitter<{ id: number }>();
 
   isEditing = false;
 
@@ -71,6 +72,13 @@ export class TaskDetailsModalComponent {
     };
 
     this.update.emit({ id: this.task.id, dto });
+    this.isEditing = false;
+  }
+
+  deleteTask() {
+    if (!this.task) return;
+
+    this.delete.emit({ id: this.task.id });
     this.isEditing = false;
   }
 }

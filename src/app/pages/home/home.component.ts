@@ -88,7 +88,7 @@ export class HomeComponent {
   onUpdateTask(event: { id: number; dto: UpdateTaskDto }) {
     this._taskService.updateTask(event.id, event.dto).subscribe({
       next: (updatedTask) => {
-        const oldStatus = this.selectedTask?.status;
+        const oldStatus = this.selectedTask!.status;
         const newStatus = updatedTask.status;
 
         if (oldStatus) {
@@ -101,10 +101,39 @@ export class HomeComponent {
 
         this.selectedTask = updatedTask;
         this.isDetailsModalOpen = false;
+        // TODO: Show toast
       },
       error: () => {
         // TODO: Show toast
       },
     });
+  }
+
+  onDeleteTask(event: { id: number }) {
+    this._taskService.deleteTask(event.id).subscribe({
+      next: (deletedTask) => {
+        const taskStatus = this.selectedTask!.status;
+
+        this.tasks[taskStatus] = this.tasks[taskStatus].filter(
+          (t) => t.id !== event.id
+        );
+        this.isDetailsModalOpen = false;
+        // TODO: Show toast
+      },
+      error: () => {
+        // TODO: Show toast
+      },
+    });
+  }
+
+  onDragAndDropTask() {
+    // const oldStatus = this.selectedTask?.status;
+    // const newStatus = updatedTask.status;
+    // if (oldStatus) {
+    //   this.tasks[oldStatus] = this.tasks[oldStatus].filter(
+    //     (t) => t.id !== updatedTask.id
+    //   );
+    // }
+    // this.tasks[newStatus].push(updatedTask);
   }
 }

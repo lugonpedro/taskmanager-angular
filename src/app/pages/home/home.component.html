@@ -13,4 +13,4 @@
 
 <app-add-task-modal [visible]="isNewTaskModalOpen" (close)="closeNewTaskModal()" (create)="onCreateTask($event)" />
 <app-task-details-modal [visible]="isDetailsModalOpen" [task]="selectedTask" (close)="closeDetails()"
-  (update)="onUpdateTask($event)"></app-task-details-modal>
+  (update)="onUpdateTask($event)" (delete)="onDeleteTask($event)"></app-task-details-modal>

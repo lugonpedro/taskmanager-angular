@@ -88,16 +88,14 @@ export class HomeComponent {
   onUpdateTask(event: { id: number; dto: UpdateTaskDto }) {
     this._taskService.updateTask(event.id, event.dto).subscribe({
       next: (updatedTask) => {
-        const oldStatus = this.selectedTask!.status;
-        const newStatus = updatedTask.status;
+        const taskStatus = this.selectedTask!.status;
 
-        if (oldStatus) {
-          this.tasks[oldStatus] = this.tasks[oldStatus].filter(
-            (t) => t.id !== updatedTask.id
-          );
+        const taskList = this.tasks[taskStatus];
+        const index = taskList.findIndex(t => t.id === updatedTask.id);
+
+        if (index !== -1) {
+          taskList[index] = updatedTask;
         }
-
-        this.tasks[newStatus].push(updatedTask);
 
         this.selectedTask = updatedTask;
         this.isDetailsModalOpen = false;
@@ -111,7 +109,7 @@ export class HomeComponent {
 
   onDeleteTask(event: { id: number }) {
     this._taskService.deleteTask(event.id).subscribe({
-      next: (deletedTask) => {
+      next: () => {
         const taskStatus = this.selectedTask!.status;
 
         this.tasks[taskStatus] = this.tasks[taskStatus].filter(

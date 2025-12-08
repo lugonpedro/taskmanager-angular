@@ -23,3 +23,7 @@ body {
   background: #78437F;
   border-radius: 2rem;
 }
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}

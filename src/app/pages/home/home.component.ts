@@ -10,6 +10,7 @@ import {
   UpdateTaskDto,
 } from '../../services/task.interfaces';
 import { TaskDetailsModalComponent } from '../../components/task-details-modal/task-details-modal.component';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,8 @@ export class HomeComponent {
   isDetailsModalOpen = false;
   selectedTask: Task | null = null;
 
+  toast = inject(ToastService);
+
   ngOnInit(): void {
     this.loadTasks();
   }
@@ -42,7 +45,7 @@ export class HomeComponent {
       .pipe(
         tap(() => {}),
         catchError(() => {
-          // TODO: Show toast
+          this.toast.error('Error loading tasks');
           this.loading = false;
           return EMPTY;
         })
@@ -50,7 +53,6 @@ export class HomeComponent {
       .subscribe((data) => {
         this.tasks = data;
         this.loading = false;
-        // TODO: Show toast
       });
   }
 
@@ -67,10 +69,10 @@ export class HomeComponent {
       next: (task) => {
         this.tasks[task.status].push(task);
         this.isNewTaskModalOpen = false;
-        // TODO: Show toast
+        this.toast.success('Task created');
       },
       error: () => {
-        // TODO: Show toast
+        this.toast.error('Error to create a task');
       },
     });
   }
@@ -91,7 +93,7 @@ export class HomeComponent {
         const taskStatus = this.selectedTask!.status;
 
         const taskList = this.tasks[taskStatus];
-        const index = taskList.findIndex(t => t.id === updatedTask.id);
+        const index = taskList.findIndex((t) => t.id === updatedTask.id);
 
         if (index !== -1) {
           taskList[index] = updatedTask;
@@ -99,10 +101,10 @@ export class HomeComponent {
 
         this.selectedTask = updatedTask;
         this.isDetailsModalOpen = false;
-        // TODO: Show toast
+        this.toast.success('Task updated');
       },
       error: () => {
-        // TODO: Show toast
+        this.toast.error('Error to update a task');
       },
     });
   }
@@ -116,10 +118,10 @@ export class HomeComponent {
           (t) => t.id !== event.id
         );
         this.isDetailsModalOpen = false;
-        // TODO: Show toast
+        this.toast.success('Task deleted');
       },
       error: () => {
-        // TODO: Show toast
+        this.toast.error('Error to delete a task');
       },
     });
   }

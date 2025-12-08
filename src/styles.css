@@ -27,3 +27,21 @@ body {
 *::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+.mat-mdc-snack-bar-container.app-snackbar {
+  --mdc-snackbar-container-color: #1E1E1E;
+  --mdc-snackbar-supporting-text-color: #D9D9D9;
+  --mat-snack-bar-button-color: #D9D9D9;
+}
+
+.mat-mdc-snack-bar-container.app-snackbar--success {
+  --mdc-snackbar-container-color: #20C35B;
+}
+
+.mat-mdc-snack-bar-container.app-snackbar--error {
+  --mdc-snackbar-container-color: #CD2E2E;
+}
+
+.mat-mdc-snack-bar-container.app-snackbar .mdc-snackbar__label {
+  font-size: 0.8rem;
+}

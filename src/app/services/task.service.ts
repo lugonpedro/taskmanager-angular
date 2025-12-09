@@ -7,16 +7,16 @@ import {
   Task,
   UpdateTaskDto,
 } from './task.interfaces';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
   private readonly _httpClient = inject(HttpClient);
-  private readonly api = 'http://localhost:8080';
 
   getTasks(): Observable<GroupedTasks> {
-    return this._httpClient.get<Task[]>(`${this.api}/tasks`).pipe(
+    return this._httpClient.get<Task[]>(`${environment.apiUrl}/tasks`).pipe(
       map((tasks) =>
         tasks.reduce(
           (acc, task) => {
@@ -30,14 +30,14 @@ export class TaskService {
   }
 
   createTask(dto: CreateTaskDto): Observable<Task> {
-    return this._httpClient.post<Task>(`${this.api}/tasks`, dto);
+    return this._httpClient.post<Task>(`${environment.apiUrl}/tasks`, dto);
   }
 
   updateTask(id: number, dto: UpdateTaskDto): Observable<Task> {
-    return this._httpClient.put<Task>(`${this.api}/tasks/${id}`, dto);
+    return this._httpClient.put<Task>(`${environment.apiUrl}/tasks/${id}`, dto);
   }
 
   deleteTask(id: number): Observable<Task> {
-    return this._httpClient.delete<Task>(`${this.api}/tasks/${id}`);
+    return this._httpClient.delete<Task>(`${environment.apiUrl}/tasks/${id}`);
   }
 }

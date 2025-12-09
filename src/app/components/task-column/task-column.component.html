@@ -8,11 +8,20 @@
   <div class="body">
     <div class="cards">
       <ng-content></ng-content>
+
+      @if(isAdding) {
+      <div class="temp-card">
+        <input type="text" placeholder="Title" [(ngModel)]="newTitle" (keydown.enter)="confirmAdd()"
+          (keydown.escape)="cancelAdding()" />
+      </div>
+      }
     </div>
 
-    <button class="add-btn">
+    @if(!isAdding) {
+    <button class="add-btn" (click)="startAdding()">
       <span class="material-icons">add</span>
       Add
     </button>
+    }
   </div>
 </section>

@@ -1,7 +1,11 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TaskColumnComponent } from '../task-column/task-column.component';
 import { TaskCardComponent } from '../task-card/task-card.component';
-import { GroupedTasks, Task, TaskStatus } from '../../services/task.interfaces';
+import {
+  GroupedTasks,
+  Task,
+  TaskStatus,
+} from '../../services/task.interfaces';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -61,5 +65,26 @@ export class TaskBoardComponent {
         error: () => this.toast.error('Error updating task status'),
       });
     }
+  }
+
+  onAddCard(status: TaskStatus, title: string) {
+    this._taskService
+      .createTask({
+        title,
+        status,
+      })
+      .subscribe({
+        next: (task) => {
+          this.tasks[status] = [...this.tasks[status], task];
+          this.toast.success('Task created');
+        },
+        error: (err) => {
+          if (err.error.title === 'Title is required') {
+            this.toast.error('Please fill in task title');
+            return;
+          }
+          this.toast.error('Error to create a task');
+        },
+      });
   }
 }

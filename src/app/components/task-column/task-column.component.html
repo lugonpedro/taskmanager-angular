@@ -12,7 +12,7 @@
       @if(isAdding) {
       <div class="temp-card">
         <input type="text" placeholder="Title" [(ngModel)]="newTitle" (keydown.enter)="confirmAdd()"
-          (keydown.escape)="cancelAdding()" />
+          (keydown.escape)="cancelAdding()" (blur)="cancelAdding()" appAutofocus />
       </div>
       }
     </div>

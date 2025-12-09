@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AutofocusDirective } from '../../autofocus.directive';
 
 @Component({
   selector: 'app-task-column',
-  imports: [FormsModule],
+  imports: [FormsModule, AutofocusDirective],
   templateUrl: './task-column.component.html',
   styleUrl: './task-column.component.css',
 })

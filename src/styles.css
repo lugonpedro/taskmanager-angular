@@ -10,22 +10,27 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-*::-webkit-scrollbar {
+.board::-webkit-scrollbar {
   width: 0.25rem;
   height: 0.25rem;
 }
 
-*::-webkit-scrollbar-track {
+.board::-webkit-scrollbar-track {
   background: transparent;
 }
 
-*::-webkit-scrollbar-thumb {
+.board::-webkit-scrollbar-thumb {
   background: #78437F;
   border-radius: 2rem;
 }
 
-*::-webkit-scrollbar-corner {
+.board::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .mat-mdc-snack-bar-container.app-snackbar {

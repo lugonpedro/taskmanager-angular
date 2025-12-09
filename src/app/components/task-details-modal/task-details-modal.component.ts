@@ -65,8 +65,8 @@ export class TaskDetailsModalComponent {
 
     const dto: UpdateTaskDto = {
       title: this.form.title,
-      description: this.form.description || null,
-      limitDate: this.form.limitDate || null
+      description: this.form.description,
+      limitDate: this.form.limitDate
     };
 
     this.update.emit({ id: this.task.id, dto });

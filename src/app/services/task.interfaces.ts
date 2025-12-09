@@ -14,12 +14,13 @@ export type GroupedTasks = Record<TaskStatus, Task[]>;
 
 export interface CreateTaskDto {
   title: string;
-  description: string | null;
-  limitDate: string | null;
+  description?: string;
+  limitDate?: string;
+  status?: TaskStatus;
 }
 
 export interface UpdateTaskDto {
   title: string;
-  description: string | null;
-  limitDate: string | null;
+  description?: string;
+  limitDate?: string;
 }

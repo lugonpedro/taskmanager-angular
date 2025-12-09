@@ -5,19 +5,11 @@ import { Task, UpdateTaskDto } from '../../services/task.interfaces';
 
 @Component({
   selector: 'app-task-details-modal',
-  standalone: true,
   imports: [FormsModule, DatePipe],
   templateUrl: './task-details-modal.component.html',
   styleUrl: './task-details-modal.component.css',
 })
 export class TaskDetailsModalComponent {
-  @Input() visible = false;
-  @Input() task: Task | null = null;
-
-  @Output() close = new EventEmitter<void>();
-  @Output() update = new EventEmitter<{ id: number; dto: UpdateTaskDto }>();
-  @Output() delete = new EventEmitter<{ id: number }>();
-
   isEditing = false;
 
   form = {
@@ -25,6 +17,12 @@ export class TaskDetailsModalComponent {
     description: '',
     limitDate: ''
   };
+
+  @Input() visible = false;
+  @Input() task: Task | null = null;
+  @Output() close = new EventEmitter<void>();
+  @Output() update = new EventEmitter<{ id: number; dto: UpdateTaskDto }>();
+  @Output() delete = new EventEmitter<{ id: number }>();
 
   ngOnChanges() {
     if (this.task) {

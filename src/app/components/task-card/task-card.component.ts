@@ -11,6 +11,5 @@ export class TaskCardComponent {
   @Input() title = '';
   @Input() limitDate!: null | string;
   @Input() description!: null | string;
-
   @Output() taskClick = new EventEmitter<void>();
 }

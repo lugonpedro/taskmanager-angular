@@ -21,10 +21,10 @@ import { ToastService } from '../../services/toast.service';
 export class TaskBoardComponent {
   readonly _taskService = inject(TaskService);
   toast = inject(ToastService);
-  @Input() tasks!: GroupedTasks;
   columns: TaskStatus[] = ['TODO', 'DOING', 'DONE'];
-  @Output() taskClick = new EventEmitter<Task>();
   connectedTo: Record<TaskStatus, TaskStatus[]> = {} as any;
+  @Input() tasks!: GroupedTasks;
+  @Output() taskClick = new EventEmitter<Task>();
 
   ngOnInit() {
     this.connectedTo = this.columns.reduce((acc, col) => {

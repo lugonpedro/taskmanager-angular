@@ -24,15 +24,12 @@ import { ToastService } from '../../services/toast.service';
 })
 export class HomeComponent {
   readonly _taskService = inject(TaskService);
+  toast = inject(ToastService);
   loading = true;
   tasks: GroupedTasks = {} as GroupedTasks;
-
   isNewTaskModalOpen = false;
-
   isDetailsModalOpen = false;
   selectedTask: Task | null = null;
-
-  toast = inject(ToastService);
 
   ngOnInit(): void {
     this.loadTasks();

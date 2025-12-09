@@ -95,6 +95,7 @@
   border: none;
   padding: 0.5rem;
   font-size: 0.9rem;
+  outline: none;
 }
 
 .modal-textarea {

@@ -1,9 +1,10 @@
-<div class="board">
+<div class="board" cdkDropListGroup>
   @for(col of columns; track col) {
-  <app-task-column class="column" [title]="col">
+  <app-task-column [title]="col" cdkDropList [id]="col" [cdkDropListData]="tasks[col]"
+    [cdkDropListConnectedTo]="connectedTo[col]" (cdkDropListDropped)="drop($event)">
     @for(task of tasks[col]; track task.id) {
     <app-task-card [title]="task.title" [limitDate]="task.limitDate" [description]="task.description"
-      (taskClick)="taskClick.emit(task)" />
+      (taskClick)="taskClick.emit(task)" cdkDrag />
     }
   </app-task-column>
   }

@@ -5,6 +5,7 @@ import {
   CreateTaskDto,
   GroupedTasks,
   Task,
+  TaskStatus,
   UpdateTaskDto,
 } from './task.interfaces';
 import { environment } from '../../environments/environment';
@@ -39,5 +40,11 @@ export class TaskService {
 
   deleteTask(id: number): Observable<Task> {
     return this._httpClient.delete<Task>(`${environment.apiUrl}/tasks/${id}`);
+  }
+
+  updateTaskStatus(id: number, newStatus: TaskStatus): Observable<Task> {
+    return this._httpClient.put<Task>(`${environment.apiUrl}/tasks/${id}`, {
+      status: newStatus,
+    });
   }
 }

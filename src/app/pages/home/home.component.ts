@@ -126,15 +126,4 @@ export class HomeComponent {
       },
     });
   }
-
-  onDragAndDropTask() {
-    // const oldStatus = this.selectedTask?.status;
-    // const newStatus = updatedTask.status;
-    // if (oldStatus) {
-    //   this.tasks[oldStatus] = this.tasks[oldStatus].filter(
-    //     (t) => t.id !== updatedTask.id
-    //   );
-    // }
-    // this.tasks[newStatus].push(updatedTask);
-  }
 }

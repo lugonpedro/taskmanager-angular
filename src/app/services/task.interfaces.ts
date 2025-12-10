@@ -1,8 +1,8 @@
 export interface Task {
   id: number;
   title: string;
-  description: null | string;
-  limitDate: null | string;
+  description?: string;
+  limitDate?: string;
   status: TaskStatus;
   createdAt: string;
   updatedAt: string;

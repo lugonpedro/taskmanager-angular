@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TaskCardComponent {
   @Input() title = '';
-  @Input() limitDate!: null | string;
-  @Input() description!: null | string;
+  @Input() limitDate!: string | undefined;
+  @Input() description!: string | undefined;
   @Output() taskClick = new EventEmitter<void>();
 }

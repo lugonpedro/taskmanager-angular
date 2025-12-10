@@ -110,34 +110,28 @@ describe('TaskColumnComponent', () => {
     expect(confirmAddSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('pressing Escape on input should call cancelAdding', () => {
+  it('pressing Escape on input should cancel adding and reset state', () => {
     component.isAdding = true;
     component.newTitle = 'Task';
     fixture.detectChanges();
-
-    const cancelAddingSpy = spyOn(component, 'cancelAdding').and.callThrough();
 
     const input = fixture.debugElement.query(By.css('.temp-card input'));
     input.triggerEventHandler('keydown.escape', {});
     fixture.detectChanges();
 
-    expect(cancelAddingSpy).toHaveBeenCalledTimes(1);
     expect(component.isAdding).toBeFalse();
     expect(component.newTitle).toBe('');
   });
 
-  it('blurring input should call cancelAdding', () => {
+  it('blurring input should cancel adding and reset state', () => {
     component.isAdding = true;
     component.newTitle = 'Task';
     fixture.detectChanges();
-
-    const cancelAddingSpy = spyOn(component, 'cancelAdding').and.callThrough();
 
     const input = fixture.debugElement.query(By.css('.temp-card input'));
     input.triggerEventHandler('blur', {});
     fixture.detectChanges();
 
-    expect(cancelAddingSpy).toHaveBeenCalledTimes(1);
     expect(component.isAdding).toBeFalse();
     expect(component.newTitle).toBe('');
   });

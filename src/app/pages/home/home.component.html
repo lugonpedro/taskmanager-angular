@@ -4,10 +4,12 @@
       <span class="material-icons">add</span>
       New Task
     </button>
+
+    <input class="search-bar" placeholder="Search..." (input)="onSearchChange($event)" />
   </header>
 
   <main class="content">
-    <app-task-board [tasks]="tasks" (taskClick)="openDetails($event)"></app-task-board>
+    <app-task-board [tasks]="visibleTasks" (taskClick)="openDetails($event)"></app-task-board>
   </main>
 </div>
 

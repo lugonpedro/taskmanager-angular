@@ -30,6 +30,7 @@ export class HomeComponent {
   isNewTaskModalOpen = false;
   isDetailsModalOpen = false;
   selectedTask: Task | null = null;
+  visibleTasks: GroupedTasks = {} as GroupedTasks;
 
   ngOnInit(): void {
     this.loadTasks();
@@ -49,6 +50,7 @@ export class HomeComponent {
       )
       .subscribe((data) => {
         this.tasks = data;
+        this.visibleTasks = data;
         this.loading = false;
       });
   }
@@ -125,5 +127,27 @@ export class HomeComponent {
         this.toast.error('Error to delete a task');
       },
     });
+  }
+
+  onSearchChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    const search = value?.trim().toLowerCase();
+    if (!search) {
+      this.visibleTasks = this.tasks;
+      return;
+    }
+
+    const filtered: GroupedTasks = {} as GroupedTasks;
+
+    Object.entries(this.tasks).forEach(([status, taskList]) => {
+      filtered[status as keyof GroupedTasks] = taskList.filter((task) => {
+        const title = task.title?.toLowerCase() ?? '';
+        const description = (task as any).description?.toLowerCase() ?? '';
+        return title.includes(search) || description.includes(search);
+      });
+    });
+
+    this.visibleTasks = filtered;
   }
 }

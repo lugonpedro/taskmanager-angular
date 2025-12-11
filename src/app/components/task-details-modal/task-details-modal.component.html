@@ -19,19 +19,13 @@
     <section class="body">
       @if (!isEditing) {
       <div class="details">
-        <div class="detail-row">
-          <span class="title">{{ task.title }}</span>
-        </div>
+        <span class="title">{{ task.title }}</span>
 
-        <div class="detail-row">
-          <span class="label">Status: </span>
-          <span class="value">{{ task.status }}</span>
-        </div>
+        <span class="status">{{ task.status }}</span>
 
         @if (task.description) {
         <div class="detail-row">
-          <span class="label">Description: </span>
-          <span class="value">{{ task.description }}</span>
+          <span class="description">{{ task.description }}</span>
         </div>
         }
 

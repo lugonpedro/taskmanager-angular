@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 4rem;
+  min-height: 4rem;
   cursor: pointer;
   color: #1E1E1E;
   transition: 0.5s;
@@ -25,6 +25,8 @@
 .task-card .title-row .title {
   font-size: 1rem;
   font-weight: 600;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .task-card .title-row .material-icons {
